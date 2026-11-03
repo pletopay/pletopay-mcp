@@ -1,5 +1,6 @@
-# Publishes to npm (with provenance) when a vX.Y.Z tag is pushed. Needs the NPM_TOKEN secret
-# (an automation token for the @pletopay scope).
+# Publishes to npm (with provenance) when a vX.Y.Z tag is pushed. Uses npm trusted publishing:
+# npm swaps this job's OIDC token for a short-lived publish token, so no npm secret is stored.
+# The trusted publisher on npmjs.com is bound to this file and the `npm` environment.
 name: Release
 
 on:
@@ -32,6 +33,4 @@ jobs:
         run: |
           test "v$(node -p "require('./package.json').version")" = "${GITHUB_REF_NAME}"
       - run: pnpm verify
-      - run: pnpm publish --no-git-checks --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish --provenance --access public
