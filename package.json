@@ -7,10 +7,10 @@
   "homepage": "https://docs.pletopay.com/mcp",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evidenze/pletopay-mcp.git"
+    "url": "git+https://github.com/pletopay/pletopay-mcp.git"
   },
   "bugs": {
-    "url": "https://github.com/evidenze/pletopay-mcp/issues"
+    "url": "https://github.com/pletopay/pletopay-mcp/issues"
   },
   "keywords": [
     "pletopay",
