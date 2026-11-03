@@ -106,9 +106,6 @@
     "yaml": "^2.8.0"
   },
   "pnpm": {
-    "overrides": {
-      "@pletopay/node": "link:../pletopay-sdk-node"
-    },
     "onlyBuiltDependencies": [
       "esbuild"
     ]

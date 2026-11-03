@@ -1,19 +1,13 @@
-# Used when building from the workspace root (docker build -f pletopay-mcp/Dockerfile .):
-# send only the two repos the image needs, without dependencies, builds or secrets.
-*
-!pletopay-sdk-node
-!pletopay-mcp
-**/node_modules
-**/dist
-**/coverage
-**/.git
-**/.env
-**/.env.*
-**/*.tgz
-**/.DS_Store
-**/.do
-**/.playwright-mcp
-pletopay-sdk-node/test
-pletopay-sdk-node/examples
-pletopay-sdk-node/docs
-pletopay-mcp/test
+# Send only what the image build needs: no dependencies, builds, tests or secrets.
+node_modules
+dist
+coverage
+test
+.git
+.github
+.env
+.env.*
+*.tgz
+.DS_Store
+.do
+.playwright-mcp

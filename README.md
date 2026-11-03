@@ -83,10 +83,8 @@ The caller's address is not forwarded: if a merchant uses an IP allowlist, API c
 
 ### Docker
 
-`@pletopay/node` is bundled into the build and not yet on npm, so build from the folder that holds both repos:
-
 ```bash
-docker build -f pletopay-mcp/Dockerfile -t pletopay-mcp .
+docker build -t pletopay-mcp .
 docker run -p 3010:3010 -e MCP_ALLOWED_HOSTS=mcp.example.com -e MCP_TRUST_PROXY_HOPS=1 pletopay-mcp
 ```
 

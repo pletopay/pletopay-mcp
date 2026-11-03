@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@pletopay/node': link:../pletopay-sdk-node
-
 importers:
 
   .:
@@ -31,8 +28,8 @@ importers:
         specifier: ^9.39.0
         version: 9.39.5
       '@pletopay/node':
-        specifier: link:../pletopay-sdk-node
-        version: link:../pletopay-sdk-node
+        specifier: ^1.0.0
+        version: 1.0.0
       '@types/express':
         specifier: ^5.0.6
         version: 5.0.6
@@ -360,6 +357,10 @@ packages:
 
   '@oxc-project/types@0.156.0':
     resolution: {integrity: sha512-1Duyg48TdJNdyhEB8Xn1L36bT9Pv6GUtlKjHxOys8xkaF/rQq3XJE+bAurSK/AgIz5mGFsb77cn9Pb20+WCScw==}
+
+  '@pletopay/node@1.0.0':
+    resolution: {integrity: sha512-6yP5wpkuQ4DiqVeaDoE6WQ8yozvHJSO6JPW2/+C5Ad29dMNBjPccC0K0reAZKMUsZE6gxLlzsFgDtKaVV2UCkQ==}
+    engines: {node: '>=24'}
 
   '@publint/pack@0.1.7':
     resolution: {integrity: sha512-4EDEmvxWtgsCnnVeBvtFIFZtUhPPt1+bA9JrSwU4Sa//6oKtzCSlGGXYJr44OD9aGISymbieJ4mCKHUygUDU+g==}
@@ -2116,6 +2117,8 @@ snapshots:
     optional: true
 
   '@oxc-project/types@0.156.0': {}
+
+  '@pletopay/node@1.0.0': {}
 
   '@publint/pack@0.1.7':
     dependencies:

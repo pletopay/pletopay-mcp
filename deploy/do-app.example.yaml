@@ -3,11 +3,10 @@
 # The server holds no secrets: every request authenticates with the merchant's own key. Do NOT add
 # a PLETOPAY_SECRET_KEY here.
 #
-# App Platform can't build this repo on its own while @pletopay/node is unpublished (the build
-# needs the sibling repo), so deploy a pre-built image from the container registry:
-#   docker build -f pletopay-mcp/Dockerfile -t registry.digitalocean.com/<registry>/pletopay-mcp:<version> .
+# Deploy a pre-built image from the container registry:
+#   docker build -t registry.digitalocean.com/<registry>/pletopay-mcp:<version> .
 #   docker push registry.digitalocean.com/<registry>/pletopay-mcp:<version>
-#   doctl apps create --spec pletopay-mcp/deploy/do-app.example.yaml   (or `doctl apps update <id> --spec …`)
+#   doctl apps create --spec deploy/do-app.example.yaml   (or `doctl apps update <id> --spec …`)
 name: pletopay-mcp
 region: lon
 services:
