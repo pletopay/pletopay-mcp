@@ -1,0 +1,116 @@
+{
+  "name": "@pletopay/mcp",
+  "version": "1.0.0",
+  "description": "Official Model Context Protocol server for the Pletopay API: lets AI agents work with payments, virtual accounts, transfers, refunds, checkout and webhooks, with money movement off by default in live mode.",
+  "license": "MIT",
+  "author": "Pletopay",
+  "homepage": "https://docs.pletopay.com/mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evidenze/pletopay-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evidenze/pletopay-mcp/issues"
+  },
+  "keywords": [
+    "pletopay",
+    "mcp",
+    "model context protocol",
+    "ai",
+    "agents",
+    "payments",
+    "nigeria",
+    "bank transfer",
+    "virtual account"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "pletopay-mcp": "./dist/bin.js"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "spec",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "start": "node dist/bin.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write \"{src,test,scripts}/**/*.{ts,mjs,js}\" \"*.{json,md}\"",
+    "format:check": "prettier --check \"{src,test,scripts}/**/*.{ts,mjs,js}\" \"*.{json,md}\"",
+    "test": "vitest run --project unit",
+    "test:watch": "vitest --project unit",
+    "test:live": "pnpm build && vitest run --project live",
+    "spec:sync": "node scripts/sync-spec.mjs",
+    "spec:check": "node scripts/sync-spec.mjs --check",
+    "generate": "node scripts/generate.mjs",
+    "generate:check": "node scripts/generate.mjs --check",
+    "check:brand": "node scripts/check-brand.mjs",
+    "check:package": "pnpm build && publint && attw --pack . --profile node16",
+    "verify": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm spec:check && pnpm docs:check && pnpm generate:check && pnpm check:brand && pnpm test && pnpm check:package",
+    "prepublishOnly": "pnpm verify",
+    "docs:sync": "node scripts/sync-docs.mjs",
+    "docs:check": "node scripts/sync-docs.mjs --check"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@eslint/js": "^9.39.0",
+    "@pletopay/node": "^1.0.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.19.0",
+    "ajv": "^8.20.0",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.9",
+    "publint": "^0.3.25",
+    "tsup": "^9.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.72.0",
+    "vitest": "^5.0.5",
+    "yaml": "^2.8.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@pletopay/node": "link:../pletopay-sdk-node"
+    },
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

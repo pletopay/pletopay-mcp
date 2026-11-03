@@ -1,0 +1,38 @@
+# DigitalOcean App Platform spec for the hosted MCP server (mcp.pletopay.com). Not applied yet.
+#
+# The server holds no secrets: every request authenticates with the merchant's own key. Do NOT add
+# a PLETOPAY_SECRET_KEY here.
+#
+# App Platform can't build this repo on its own while @pletopay/node is unpublished (the build
+# needs the sibling repo), so deploy a pre-built image from the container registry:
+#   docker build -f pletopay-mcp/Dockerfile -t registry.digitalocean.com/<registry>/pletopay-mcp:<version> .
+#   docker push registry.digitalocean.com/<registry>/pletopay-mcp:<version>
+#   doctl apps create --spec pletopay-mcp/deploy/do-app.example.yaml   (or `doctl apps update <id> --spec …`)
+name: pletopay-mcp
+region: lon
+services:
+  - name: mcp
+    image:
+      registry_type: DOCR
+      repository: pletopay-mcp
+      tag: "1.0.0"
+    instance_size_slug: apps-s-1vcpu-0.5gb
+    instance_count: 2
+    http_port: 3010
+    health_check:
+      http_path: /healthz
+    envs:
+      - key: PLETOPAY_API_URL
+        value: https://api.pletopay.com
+      # The public hostname(s) this service answers to (DNS rebinding protection).
+      - key: MCP_ALLOWED_HOSTS
+        value: mcp.pletopay.com
+      # Proxies between the client and the container that append to X-Forwarded-For. Check the
+      # logged `ip` after the first deploy: it must be the client's address, not the load balancer's.
+      - key: MCP_TRUST_PROXY_HOPS
+        value: "1"
+      - key: MCP_RATE_LIMIT_PER_MINUTE
+        value: "300"
+domains:
+  - domain: mcp.pletopay.com
+    type: PRIMARY
