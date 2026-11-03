@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 (unreleased)
+## 1.0.0 (2026-11-03)
 
 - First release: a Model Context Protocol server for the Pletopay API.
 - One tool per public API operation (83), generated from the API contract, grouped into toolsets.

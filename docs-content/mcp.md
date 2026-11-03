@@ -17,7 +17,7 @@ It gives agents:
 
 ## Run it on your machine
 
-The server runs locally with `npx` (Node.js 20 or later). Your key stays on your machine and is sent only to the Pletopay API. Pass it in the `PLETOPAY_SECRET_KEY` environment variable.
+The server runs locally with `npx` (Node.js 24 or later). Your key stays on your machine and is sent only to the Pletopay API. Pass it in the `PLETOPAY_SECRET_KEY` environment variable.
 
 ```bash tab="Claude Code"
 claude mcp add pletopay --env PLETOPAY_SECRET_KEY=sk_test_… -- npx -y @pletopay/mcp

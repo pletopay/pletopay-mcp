@@ -5,7 +5,7 @@ import type { Options } from 'tsup';
 // from this repo alone both work, and the server always runs the SDK version it was tested with.
 const shared: Options = {
   sourcemap: true,
-  target: 'node20',
+  target: 'node24',
   platform: 'node',
   treeshake: true,
   splitting: false,

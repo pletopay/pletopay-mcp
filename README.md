@@ -33,7 +33,7 @@ claude mcp add pletopay --env PLETOPAY_SECRET_KEY=sk_test_… -- npx -y @pletopa
 }
 ```
 
-Requires Node.js 20 or newer. Pass the key in the environment rather than with `--api-key`: command-line arguments are visible to other users of the machine.
+Requires Node.js 24 or newer. Pass the key in the environment rather than with `--api-key`: command-line arguments are visible to other users of the machine.
 
 ## Options
 

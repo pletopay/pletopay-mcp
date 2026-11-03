@@ -9,7 +9,7 @@ pnpm install
 pnpm verify
 ```
 
-Node.js 22 and pnpm 10 are used for development (the published package supports Node.js 20+). Until `@pletopay/node` is on npm, a sibling `pletopay-sdk-node` checkout is linked through `pnpm.overrides` and bundled into the build.
+Node.js 24 and pnpm 10 are used for development (the published package supports Node.js 24+). Until `@pletopay/node` is on npm, a sibling `pletopay-sdk-node` checkout is linked through `pnpm.overrides` and bundled into the build.
 
 ## How the server is built
 
